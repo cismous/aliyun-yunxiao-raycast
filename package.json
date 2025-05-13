@@ -5,6 +5,7 @@
   "description": "Search Ali YunXiao Code Project",
   "icon": "extension-icon.png",
   "author": "kejiang",
+  "owner": "ali-yun-xiao",
   "categories": [
     "Productivity"
   ],

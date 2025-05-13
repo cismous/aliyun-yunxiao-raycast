@@ -25,19 +25,18 @@ export default function Command() {
     >
       {list.map((item) => {
         const title = item.nameWithNamespace.split("/").slice(1).join("/").trim();
+        const { id, webUrl } = item;
+        const updateViewed = () => setViewed(id);
         return (
           <List.Item
-            key={item.id}
+            key={id}
             title={title}
             actions={
               <ActionPanel>
-                <Action.OpenInBrowser
-                  title="Open in Browser"
-                  url={item.webUrl}
-                  onOpen={() => {
-                    setViewed(item.id);
-                  }}
-                />
+                <Action.OpenInBrowser title="查看代码" url={webUrl} onOpen={updateViewed} />
+                <Action.OpenInBrowser title="查看流水线" url={`${webUrl}/pipeline`} onOpen={updateViewed} />
+                <Action.OpenInBrowser title="查看分支" url={`${webUrl}/branches`} onOpen={updateViewed} />
+                <Action.OpenInBrowser title="查看合并请求" url={`${webUrl}/changes`} onOpen={updateViewed} />
               </ActionPanel>
             }
           />

@@ -22,7 +22,7 @@ export function useRepositoryList() {
   }, [viewed]);
 
   useEffect(() => {
-    cacheRepository.set("getRepositoryLis", JSON.stringify(repositoryList));
+    cacheRepository.set("getRepositoryList", JSON.stringify(repositoryList));
   }, [repositoryList]);
 
   return {
@@ -42,7 +42,7 @@ export function useRepositoryList() {
 }
 
 function getRepositoryList() {
-  const cache = cacheRepository.get("getRepositoryLis");
+  const cache = cacheRepository.get("getRepositoryList");
   try {
     const items: IRepositoryListItem[] = cache ? JSON.parse(cache) : [];
     return items;
